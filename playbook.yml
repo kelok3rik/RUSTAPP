@@ -1,0 +1,17 @@
+---
+- name: Desplegar y actualizar la app en servidores
+  hosts: all
+  vars: 
+    ansible_python_interpreter: /usr/bin/python3 
+  tasks:
+    - name: Clonar repositorio
+      git:
+        repo: https://github.com/kelok3rik/CRUD-RUST-DOCKER.git
+        dest: /opt/CRUD-RUST-DOCKER
+
+    - name: Build and Start Docker container
+      shell: |
+        cd /opt/CRUD-RUST-DOCKER/crud
+        docker build -t crud:latest .
+        cd /opt/CRUD-RUST-DOCKER/docker
+        docker-compose up -d
