@@ -11,7 +11,7 @@
 
     - name: Build and Start Docker container
       shell: |
-        cd /opt/CRUD-RUST-DOCKER/crud
+        cd /home/kelok3rik/CRUD-RUST-DOCKER/crud
         docker build -t crud:latest .
-        cd /opt/CRUD-RUST-DOCKER/docker
+        cd /home/kelok3rik/CRUD-RUST-DOCKER/docker
         docker-compose up -d
