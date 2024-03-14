@@ -1,18 +1,32 @@
 ---
-- name: Desplegar y actualizar la app en servidores
+- name: Deploy and update
   hosts: all
   vars: 
     ansible_python_interpreter: /usr/bin/python3 
   tasks:
+    - name: Detener el contenedor Docker existente
+      shell: |
+        cd /home/kelok3rik/CRUD-RUST-DOCKER/crud/docker
+        docker-compose down
+      ignore_errors: true
+
+    - name: Eliminar el contenedor Docker existente
+      shell: |
+        cd /home/kelok3rik/CRUD-RUST-DOCKER/crud/docker
+        docker-compose rm -f
+      ignore_errors: true
+
     - name: Clonar repositorio
       git:
         repo: https://github.com/kelok3rik/CRUD-RUST-DOCKER.git
         dest: /home/kelok3rik/CRUD-RUST-DOCKER
 
-    - name: Build and Start Docker container
+    - name: Construir el contenedor Docker
       shell: |
         cd /home/kelok3rik/CRUD-RUST-DOCKER/crud
         docker build -t crud:latest .
+
+    - name: Iniciar el contenedor Docker
+      shell: |
         cd /home/kelok3rik/CRUD-RUST-DOCKER/crud/docker
-        docker-compose down
         docker-compose up -d
