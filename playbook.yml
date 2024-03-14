@@ -7,7 +7,7 @@
     - name: Clonar repositorio
       git:
         repo: https://github.com/kelok3rik/CRUD-RUST-DOCKER.git
-        dest: /opt/CRUD-RUST-DOCKER
+        dest: /home/kelok3rik/CRUD-RUST-DOCKER
 
     - name: Build and Start Docker container
       shell: |
