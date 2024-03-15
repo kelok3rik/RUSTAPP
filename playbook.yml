@@ -12,6 +12,9 @@
       git:
         repo: https://github.com/kelok3rik/CRUD-RUST-DOCKER.git
         dest: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER"
+        force: yes
+        update: yes
+        
     - name: Detener el contenedor Docker existente
       command: docker-compose down
       args:
