@@ -24,10 +24,9 @@
           docker-compose down
 
     - name: Eliminar el contenedor Docker existente
-   #   command: docker-compose rm -f
       shell: |
-          cd /root/CRUD-RUST-DOCKER/docker
-          docker-compose rm -f
+        cd /home/kelok3rik/CRUD-RUST-DOCKER/docker
+        docker-compose rm -f
       ignore_errors: true
      
     - name: Construir el contenedor Docker
