@@ -1,6 +1,6 @@
 ---
 - name: Deploy and update
-  hosts: all
+  hosts: inventario
   
   tasks:
     - name: Crear directorio para playbooks si no existe
