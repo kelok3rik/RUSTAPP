@@ -1,32 +1,35 @@
 ---
 - name: Deploy and update
   hosts: all
-  vars: 
-    ansible_python_interpreter: /usr/bin/python3 
+  
   tasks:
-    - name: Detener el contenedor Docker existente
-      shell: |
-        cd /home/kelok3rik/CRUD-RUST-DOCKER/crud/docker
-        docker-compose down
-      ignore_errors: true
-
-    - name: Eliminar el contenedor Docker existente
-      shell: |
-        cd /home/kelok3rik/CRUD-RUST-DOCKER/crud/docker
-        docker-compose rm -f
-      ignore_errors: true
-
+    - name: Crear directorio para playbooks si no existe
+      file:
+        path: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER"
+        state: directory
+        mode: '0755'  # Permisos para el directorio
     - name: Clonar repositorio
       git:
         repo: https://github.com/kelok3rik/CRUD-RUST-DOCKER.git
-        dest: /home/kelok3rik/CRUD-RUST-DOCKER
+        dest: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER"
+    - name: Detener el contenedor Docker existente
+      command: docker-compose down
+      args:
+        chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER"
+
+    - name: Eliminar el contenedor Docker existente
+      command: docker-compose rm -f
+        args:
+          chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER"
+      ignore_errors: true
 
     - name: Construir el contenedor Docker
-      shell: |
-        cd /home/kelok3rik/CRUD-RUST-DOCKER/crud
-        docker build -t crud:latest .
+      command: docker build -t crud:latest .
+          args:
+            chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/crud"
 
     - name: Iniciar el contenedor Docker
-      shell: |
-        cd /home/kelok3rik/CRUD-RUST-DOCKER/crud/docker
-        docker-compose up -d
+      command: docker-compose up -d
+          args:
+            chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/crud/docker"
+        
