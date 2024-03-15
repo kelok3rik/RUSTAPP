@@ -32,7 +32,7 @@
     - name: Construir el contenedor Docker
       #command: docker build -t crud:latest .
       shell: |
-          cd /root/CRUD-RUST-DOCKER/docker
+          cd /root/CRUD-RUST-DOCKER/
           docker build -t crud:latest .
       
 
