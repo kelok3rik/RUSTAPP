@@ -27,7 +27,8 @@
    #   ignore_errors: true
 
     - name: Construir el contenedor Docker
-      command: docker build -t crud:latest .
+      #command: docker build -t crud:latest .
+      command: docker-compose build
       args:
         chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/"
 
