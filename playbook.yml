@@ -34,5 +34,5 @@
     - name: Iniciar el contenedor Docker
       command: docker-compose up -d
       args:
-        chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/docker"
+        chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/"
         
