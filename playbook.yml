@@ -29,10 +29,10 @@
     - name: Construir el contenedor Docker
       command: docker build -t crud:latest .
       args:
-        chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/crud"
+        chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/"
 
     - name: Iniciar el contenedor Docker
       command: docker-compose up -d
       args:
-        chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/crud/docker"
+        chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/docker"
         
