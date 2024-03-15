@@ -22,17 +22,17 @@
 
     - name: Eliminar el contenedor Docker existente
       command: docker-compose rm -f
-        args:
-          chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER"
+      args:
+        chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER"
       ignore_errors: true
 
     - name: Construir el contenedor Docker
       command: docker build -t crud:latest .
-          args:
-            chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/crud"
+      args:
+        chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/crud"
 
     - name: Iniciar el contenedor Docker
       command: docker-compose up -d
-          args:
-            chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/crud/docker"
+      args:
+        chdir: "{{ ansible_env.HOME }}/CRUD-RUST-DOCKER/crud/docker"
         
