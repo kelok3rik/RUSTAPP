@@ -4,13 +4,13 @@
   tasks:
     - name: Detener el contenedor Docker existente
       shell: |
-        cd /home/kelok3rik/CRUD-RUST-DOCKER/crud/docker
+        cd /CRUD-RUST-DOCKER/crud/docker
         docker-compose down
      
 
     - name: Eliminar el contenedor Docker existente
       shell: |
-        cd /home/kelok3rik/CRUD-RUST-DOCKER/crud/docker
+        cd /CRUD-RUST-DOCKER/crud/docker
         docker-compose rm -f
     
 
@@ -22,11 +22,11 @@
 
     - name: Construir el contenedor Docker
       shell: |
-        cd /home/kelok3rik/CRUD-RUST-DOCKER/crud
+        cd /CRUD-RUST-DOCKER/crud
         docker build -t crud:latest .
     - name: Iniciar el contenedor Docker
       shell: |
-        cd /home/kelok3rik/CRUD-RUST-DOCKER/crud/docker
+        cd /CRUD-RUST-DOCKER/crud/docker
         docker-compose down
         docker-compose up -d
         docker-compose up -d
