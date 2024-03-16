@@ -10,11 +10,11 @@
 
     - name: Construir el contenedor Docker
       shell: |
-        cd /CRUD-RUST-DOCKER/crud
+        cd /CRUD-RUST-DOCKER
         docker build -t crud:latest .
         
     - name: Iniciar el contenedor Docker
       shell: |
-        cd /CRUD-RUST-DOCKER/crud/docker
+        cd /CRUD-RUST-DOCKER/docker
         docker-compose up -d
        
