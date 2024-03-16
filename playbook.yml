@@ -2,18 +2,6 @@
   hosts: inventario
   
   tasks:
-    - name: Detener el contenedor Docker existente
-      shell: |
-        cd /CRUD-RUST-DOCKER/crud/docker
-        docker-compose down
-     
-
-    - name: Eliminar el contenedor Docker existente
-      shell: |
-        cd /CRUD-RUST-DOCKER/crud/docker
-        docker-compose rm -f
-    
-
     - name: Clonar repositorio
       git:
         repo: https://github.com/kelok3rik/CRUD-RUST-DOCKER.git
@@ -24,9 +12,9 @@
       shell: |
         cd /CRUD-RUST-DOCKER/crud
         docker build -t crud:latest .
+        
     - name: Iniciar el contenedor Docker
       shell: |
         cd /CRUD-RUST-DOCKER/crud/docker
-        docker-compose down
         docker-compose up -d
-        docker-compose up -d
+       
