@@ -7,14 +7,13 @@
         repo: https://github.com/kelok3rik/CRUD-RUST-DOCKER.git
         dest: /home/kelok3rik/CRUD-RUST-DOCKER
 
-
     - name: Construir el contenedor Docker
       shell: |
-        cd /CRUD-RUST-DOCKER
+        cd /home/kelok3rik/CRUD-RUST-DOCKER
         docker build -t crud:latest .
         
     - name: Iniciar el contenedor Docker
       shell: |
-        cd /CRUD-RUST-DOCKER/docker
+        cd cd /home/kelok3rik/CRUD-RUST-DOCKER/docker
         docker-compose up -d
        
