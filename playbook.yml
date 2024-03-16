@@ -14,6 +14,6 @@
         
     - name: Iniciar el contenedor Docker
       shell: |
-        cd cd /home/kelok3rik/CRUD-RUST-DOCKER/docker
+        cd /home/kelok3rik/CRUD-RUST-DOCKER/docker
         docker-compose up -d
        
