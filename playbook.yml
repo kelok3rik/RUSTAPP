@@ -1,4 +1,3 @@
----
 - name: Deploy and update
   hosts: all
   vars: 
@@ -8,25 +7,27 @@
       shell: |
         cd /home/kelok3rik/CRUD-RUST-DOCKER/crud/docker
         docker-compose down
-      ignore_errors: true
+     
 
     - name: Eliminar el contenedor Docker existente
       shell: |
         cd /home/kelok3rik/CRUD-RUST-DOCKER/crud/docker
         docker-compose rm -f
-      ignore_errors: true
+    
 
     - name: Clonar repositorio
       git:
         repo: https://github.com/kelok3rik/CRUD-RUST-DOCKER.git
         dest: /home/kelok3rik/CRUD-RUST-DOCKER
 
+
     - name: Construir el contenedor Docker
       shell: |
         cd /home/kelok3rik/CRUD-RUST-DOCKER/crud
         docker build -t crud:latest .
-
     - name: Iniciar el contenedor Docker
       shell: |
         cd /home/kelok3rik/CRUD-RUST-DOCKER/crud/docker
+        docker-compose down
+        docker-compose up -d
         docker-compose up -d
